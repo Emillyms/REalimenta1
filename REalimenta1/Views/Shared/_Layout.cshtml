@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="align-items-md-center">
+        <img src="~/Resources/imagens/Capturar.PNG" alt="Realimenta" class="mx-auto d-block" />
+    </div>
+
+    <div class="header">
+        <nav class="navbar navbar-expand-sm bg-info navbar-dark">
+            <a class="navbar-brand text-center text-white"><b>REalimenta</b></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        &nbsp; @Html.ActionLink("Menu", "Index", "Home", new { id = 1 }, new { @class = "btn btn-info" }) &nbsp;
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Sobre Nós", "About", "Home", new { id = 1 }, new { @class = "btn btn-info" }) &nbsp;
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Como doar?", "How", "doacao", new { id = 1 }, new { @class = "btn btn-info" }) &nbsp;
+                    </li>
+                    <li class="nav-item float-right">
+                        @Html.ActionLink("Login", "Login", "Home", new { id = 1 }, new { @class = "btn btn-info" }) &nbsp;
+                    </li>
+                </ul>
+               
+            </div>
+        </nav>
+    </div>
+
+   
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer class="bg-info">
+            <br />
+            <p class="text-center">&copy; @DateTime.Now.Year - REalimenta</p>
+            <br />
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

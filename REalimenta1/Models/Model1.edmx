@@ -1,0 +1,799 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="bd_realimentaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="alimento">
+          <Key>
+            <PropertyRef Name="alimento_id" />
+          </Key>
+          <Property Name="alimento_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="validade" Type="date" Nullable="false" />
+          <Property Name="quantidade" Type="int" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="detalhes" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="origem" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="mercado_id" Type="int" Nullable="false" />
+          <Property Name="categoriaalimento_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="categoria_alimento">
+          <Key>
+            <PropertyRef Name="categoriaalimento_id" />
+          </Key>
+          <Property Name="categoriaalimento_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="categoria_higiene">
+          <Key>
+            <PropertyRef Name="categoriahigiene_id" />
+          </Key>
+          <Property Name="categoriahigiene_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="continente">
+          <Key>
+            <PropertyRef Name="continente_id" />
+          </Key>
+          <Property Name="continente_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="doacao">
+          <Key>
+            <PropertyRef Name="doacao_id" />
+          </Key>
+          <Property Name="doacao_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ong_id" Type="int" Nullable="false" />
+          <Property Name="mercado_id" Type="int" Nullable="false" />
+          <Property Name="alimento_id" Type="int" Nullable="false" />
+          <Property Name="higiene_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="estado">
+          <Key>
+            <PropertyRef Name="estado_id" />
+          </Key>
+          <Property Name="estado_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="pais_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="higiene">
+          <Key>
+            <PropertyRef Name="higiene_id" />
+          </Key>
+          <Property Name="higiene_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="validade" Type="date" Nullable="false" />
+          <Property Name="quantidade" Type="int" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="detalhes" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="origem" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="mercado_id" Type="int" Nullable="false" />
+          <Property Name="categoriahigiene_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="localidade">
+          <Key>
+            <PropertyRef Name="localidade_id" />
+          </Key>
+          <Property Name="localidade_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cidade" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="endereco" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="estado_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mercado">
+          <Key>
+            <PropertyRef Name="mercado_id" />
+          </Key>
+          <Property Name="mercado_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cnpj" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="razao_social" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="responsavel" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="contato" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="localidade_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ong">
+          <Key>
+            <PropertyRef Name="ong_id" />
+          </Key>
+          <Property Name="ong_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cnpj" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="razao_social" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="atividade" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="responsavel" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="contato" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="localidade_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pais">
+          <Key>
+            <PropertyRef Name="pais_id" />
+          </Key>
+          <Property Name="pais_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="continente_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__alimento__catego__239E4DCF">
+          <End Role="categoria_alimento" Type="Self.categoria_alimento" Multiplicity="1" />
+          <End Role="alimento" Type="Self.alimento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria_alimento">
+              <PropertyRef Name="categoriaalimento_id" />
+            </Principal>
+            <Dependent Role="alimento">
+              <PropertyRef Name="categoriaalimento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__alimento__mercad__22AA2996">
+          <End Role="mercado" Type="Self.mercado" Multiplicity="1" />
+          <End Role="alimento" Type="Self.alimento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mercado">
+              <PropertyRef Name="mercado_id" />
+            </Principal>
+            <Dependent Role="alimento">
+              <PropertyRef Name="mercado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__doacao__alimento__2D27B809">
+          <End Role="categoria_alimento" Type="Self.categoria_alimento" Multiplicity="1" />
+          <End Role="doacao" Type="Self.doacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria_alimento">
+              <PropertyRef Name="categoriaalimento_id" />
+            </Principal>
+            <Dependent Role="doacao">
+              <PropertyRef Name="alimento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__doacao__mercado___2C3393D0">
+          <End Role="mercado" Type="Self.mercado" Multiplicity="1" />
+          <End Role="doacao" Type="Self.doacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mercado">
+              <PropertyRef Name="mercado_id" />
+            </Principal>
+            <Dependent Role="doacao">
+              <PropertyRef Name="mercado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__estado__pais_id__15502E78">
+          <End Role="pais" Type="Self.pais" Multiplicity="1" />
+          <End Role="estado" Type="Self.estado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pais">
+              <PropertyRef Name="pais_id" />
+            </Principal>
+            <Dependent Role="estado">
+              <PropertyRef Name="pais_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__higiene__categor__29572725">
+          <End Role="categoria_higiene" Type="Self.categoria_higiene" Multiplicity="1" />
+          <End Role="higiene" Type="Self.higiene" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria_higiene">
+              <PropertyRef Name="categoriahigiene_id" />
+            </Principal>
+            <Dependent Role="higiene">
+              <PropertyRef Name="categoriahigiene_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__higiene__mercado__286302EC">
+          <End Role="mercado" Type="Self.mercado" Multiplicity="1" />
+          <End Role="higiene" Type="Self.higiene" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mercado">
+              <PropertyRef Name="mercado_id" />
+            </Principal>
+            <Dependent Role="higiene">
+              <PropertyRef Name="mercado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__localidad__estad__182C9B23">
+          <End Role="estado" Type="Self.estado" Multiplicity="1" />
+          <End Role="localidade" Type="Self.localidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado">
+              <PropertyRef Name="estado_id" />
+            </Principal>
+            <Dependent Role="localidade">
+              <PropertyRef Name="estado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__mercado__localid__1B0907CE">
+          <End Role="localidade" Type="Self.localidade" Multiplicity="1" />
+          <End Role="mercado" Type="Self.mercado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="localidade">
+              <PropertyRef Name="localidade_id" />
+            </Principal>
+            <Dependent Role="mercado">
+              <PropertyRef Name="localidade_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ong__localidade___1DE57479">
+          <End Role="localidade" Type="Self.localidade" Multiplicity="1" />
+          <End Role="ong" Type="Self.ong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="localidade">
+              <PropertyRef Name="localidade_id" />
+            </Principal>
+            <Dependent Role="ong">
+              <PropertyRef Name="localidade_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pais__continente__1273C1CD">
+          <End Role="continente" Type="Self.continente" Multiplicity="1" />
+          <End Role="pais" Type="Self.pais" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="continente">
+              <PropertyRef Name="continente_id" />
+            </Principal>
+            <Dependent Role="pais">
+              <PropertyRef Name="continente_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bd_realimentaModelStoreContainer">
+          <EntitySet Name="alimento" EntityType="Self.alimento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="categoria_alimento" EntityType="Self.categoria_alimento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="categoria_higiene" EntityType="Self.categoria_higiene" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="continente" EntityType="Self.continente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="doacao" EntityType="Self.doacao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="estado" EntityType="Self.estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="higiene" EntityType="Self.higiene" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="localidade" EntityType="Self.localidade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mercado" EntityType="Self.mercado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ong" EntityType="Self.ong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pais" EntityType="Self.pais" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__alimento__catego__239E4DCF" Association="Self.FK__alimento__catego__239E4DCF">
+            <End Role="categoria_alimento" EntitySet="categoria_alimento" />
+            <End Role="alimento" EntitySet="alimento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__alimento__mercad__22AA2996" Association="Self.FK__alimento__mercad__22AA2996">
+            <End Role="mercado" EntitySet="mercado" />
+            <End Role="alimento" EntitySet="alimento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__doacao__alimento__2D27B809" Association="Self.FK__doacao__alimento__2D27B809">
+            <End Role="categoria_alimento" EntitySet="categoria_alimento" />
+            <End Role="doacao" EntitySet="doacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__doacao__mercado___2C3393D0" Association="Self.FK__doacao__mercado___2C3393D0">
+            <End Role="mercado" EntitySet="mercado" />
+            <End Role="doacao" EntitySet="doacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__estado__pais_id__15502E78" Association="Self.FK__estado__pais_id__15502E78">
+            <End Role="pais" EntitySet="pais" />
+            <End Role="estado" EntitySet="estado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__higiene__categor__29572725" Association="Self.FK__higiene__categor__29572725">
+            <End Role="categoria_higiene" EntitySet="categoria_higiene" />
+            <End Role="higiene" EntitySet="higiene" />
+          </AssociationSet>
+          <AssociationSet Name="FK__higiene__mercado__286302EC" Association="Self.FK__higiene__mercado__286302EC">
+            <End Role="mercado" EntitySet="mercado" />
+            <End Role="higiene" EntitySet="higiene" />
+          </AssociationSet>
+          <AssociationSet Name="FK__localidad__estad__182C9B23" Association="Self.FK__localidad__estad__182C9B23">
+            <End Role="estado" EntitySet="estado" />
+            <End Role="localidade" EntitySet="localidade" />
+          </AssociationSet>
+          <AssociationSet Name="FK__mercado__localid__1B0907CE" Association="Self.FK__mercado__localid__1B0907CE">
+            <End Role="localidade" EntitySet="localidade" />
+            <End Role="mercado" EntitySet="mercado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ong__localidade___1DE57479" Association="Self.FK__ong__localidade___1DE57479">
+            <End Role="localidade" EntitySet="localidade" />
+            <End Role="ong" EntitySet="ong" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pais__continente__1273C1CD" Association="Self.FK__pais__continente__1273C1CD">
+            <End Role="continente" EntitySet="continente" />
+            <End Role="pais" EntitySet="pais" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bd_realimentaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="alimento">
+          <Key>
+            <PropertyRef Name="alimento_id" />
+          </Key>
+          <Property Name="alimento_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="validade" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="quantidade" Type="Int32" Nullable="false" />
+          <Property Name="nome" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="detalhes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="origem" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mercado_id" Type="Int32" Nullable="false" />
+          <Property Name="categoriaalimento_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="categoria_alimento" Relationship="Self.FK__alimento__catego__239E4DCF" FromRole="alimento" ToRole="categoria_alimento" />
+          <NavigationProperty Name="mercado" Relationship="Self.FK__alimento__mercad__22AA2996" FromRole="alimento" ToRole="mercado" />
+        </EntityType>
+        <EntityType Name="categoria_alimento">
+          <Key>
+            <PropertyRef Name="categoriaalimento_id" />
+          </Key>
+          <Property Name="categoriaalimento_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="alimento" Relationship="Self.FK__alimento__catego__239E4DCF" FromRole="categoria_alimento" ToRole="alimento" />
+          <NavigationProperty Name="doacao" Relationship="Self.FK__doacao__alimento__2D27B809" FromRole="categoria_alimento" ToRole="doacao" />
+        </EntityType>
+        <EntityType Name="categoria_higiene">
+          <Key>
+            <PropertyRef Name="categoriahigiene_id" />
+          </Key>
+          <Property Name="categoriahigiene_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="higiene" Relationship="Self.FK__higiene__categor__29572725" FromRole="categoria_higiene" ToRole="higiene" />
+        </EntityType>
+        <EntityType Name="continente">
+          <Key>
+            <PropertyRef Name="continente_id" />
+          </Key>
+          <Property Name="continente_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="pais" Relationship="Self.FK__pais__continente__1273C1CD" FromRole="continente" ToRole="pais" />
+        </EntityType>
+        <EntityType Name="doacao">
+          <Key>
+            <PropertyRef Name="doacao_id" />
+          </Key>
+          <Property Name="doacao_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ong_id" Type="Int32" Nullable="false" />
+          <Property Name="mercado_id" Type="Int32" Nullable="false" />
+          <Property Name="alimento_id" Type="Int32" Nullable="false" />
+          <Property Name="higiene_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="categoria_alimento" Relationship="Self.FK__doacao__alimento__2D27B809" FromRole="doacao" ToRole="categoria_alimento" />
+          <NavigationProperty Name="mercado" Relationship="Self.FK__doacao__mercado___2C3393D0" FromRole="doacao" ToRole="mercado" />
+        </EntityType>
+        <EntityType Name="estado">
+          <Key>
+            <PropertyRef Name="estado_id" />
+          </Key>
+          <Property Name="estado_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pais_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="pais" Relationship="Self.FK__estado__pais_id__15502E78" FromRole="estado" ToRole="pais" />
+          <NavigationProperty Name="localidade" Relationship="Self.FK__localidad__estad__182C9B23" FromRole="estado" ToRole="localidade" />
+        </EntityType>
+        <EntityType Name="higiene">
+          <Key>
+            <PropertyRef Name="higiene_id" />
+          </Key>
+          <Property Name="higiene_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="validade" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="quantidade" Type="Int32" Nullable="false" />
+          <Property Name="nome" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="detalhes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="origem" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mercado_id" Type="Int32" Nullable="false" />
+          <Property Name="categoriahigiene_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="categoria_higiene" Relationship="Self.FK__higiene__categor__29572725" FromRole="higiene" ToRole="categoria_higiene" />
+          <NavigationProperty Name="mercado" Relationship="Self.FK__higiene__mercado__286302EC" FromRole="higiene" ToRole="mercado" />
+        </EntityType>
+        <EntityType Name="localidade">
+          <Key>
+            <PropertyRef Name="localidade_id" />
+          </Key>
+          <Property Name="localidade_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cidade" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="endereco" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="estado" Relationship="Self.FK__localidad__estad__182C9B23" FromRole="localidade" ToRole="estado" />
+          <NavigationProperty Name="mercado" Relationship="Self.FK__mercado__localid__1B0907CE" FromRole="localidade" ToRole="mercado" />
+          <NavigationProperty Name="ong" Relationship="Self.FK__ong__localidade___1DE57479" FromRole="localidade" ToRole="ong" />
+        </EntityType>
+        <EntityType Name="mercado">
+          <Key>
+            <PropertyRef Name="mercado_id" />
+          </Key>
+          <Property Name="mercado_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cnpj" Type="String" MaxLength="18" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="razao_social" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="responsavel" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contato" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="localidade_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="alimento" Relationship="Self.FK__alimento__mercad__22AA2996" FromRole="mercado" ToRole="alimento" />
+          <NavigationProperty Name="doacao" Relationship="Self.FK__doacao__mercado___2C3393D0" FromRole="mercado" ToRole="doacao" />
+          <NavigationProperty Name="higiene" Relationship="Self.FK__higiene__mercado__286302EC" FromRole="mercado" ToRole="higiene" />
+          <NavigationProperty Name="localidade" Relationship="Self.FK__mercado__localid__1B0907CE" FromRole="mercado" ToRole="localidade" />
+        </EntityType>
+        <EntityType Name="ong">
+          <Key>
+            <PropertyRef Name="ong_id" />
+          </Key>
+          <Property Name="ong_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cnpj" Type="String" MaxLength="18" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="razao_social" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="atividade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="responsavel" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contato" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="localidade_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="localidade" Relationship="Self.FK__ong__localidade___1DE57479" FromRole="ong" ToRole="localidade" />
+        </EntityType>
+        <EntityType Name="pais">
+          <Key>
+            <PropertyRef Name="pais_id" />
+          </Key>
+          <Property Name="pais_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="continente_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="continente" Relationship="Self.FK__pais__continente__1273C1CD" FromRole="pais" ToRole="continente" />
+          <NavigationProperty Name="estado" Relationship="Self.FK__estado__pais_id__15502E78" FromRole="pais" ToRole="estado" />
+        </EntityType>
+        <Association Name="FK__alimento__catego__239E4DCF">
+          <End Role="categoria_alimento" Type="Self.categoria_alimento" Multiplicity="1" />
+          <End Role="alimento" Type="Self.alimento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria_alimento">
+              <PropertyRef Name="categoriaalimento_id" />
+            </Principal>
+            <Dependent Role="alimento">
+              <PropertyRef Name="categoriaalimento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__alimento__mercad__22AA2996">
+          <End Role="mercado" Type="Self.mercado" Multiplicity="1" />
+          <End Role="alimento" Type="Self.alimento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mercado">
+              <PropertyRef Name="mercado_id" />
+            </Principal>
+            <Dependent Role="alimento">
+              <PropertyRef Name="mercado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__doacao__alimento__2D27B809">
+          <End Role="categoria_alimento" Type="Self.categoria_alimento" Multiplicity="1" />
+          <End Role="doacao" Type="Self.doacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria_alimento">
+              <PropertyRef Name="categoriaalimento_id" />
+            </Principal>
+            <Dependent Role="doacao">
+              <PropertyRef Name="alimento_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__higiene__categor__29572725">
+          <End Role="categoria_higiene" Type="Self.categoria_higiene" Multiplicity="1" />
+          <End Role="higiene" Type="Self.higiene" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria_higiene">
+              <PropertyRef Name="categoriahigiene_id" />
+            </Principal>
+            <Dependent Role="higiene">
+              <PropertyRef Name="categoriahigiene_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pais__continente__1273C1CD">
+          <End Role="continente" Type="Self.continente" Multiplicity="1" />
+          <End Role="pais" Type="Self.pais" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="continente">
+              <PropertyRef Name="continente_id" />
+            </Principal>
+            <Dependent Role="pais">
+              <PropertyRef Name="continente_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__doacao__mercado___2C3393D0">
+          <End Role="mercado" Type="Self.mercado" Multiplicity="1" />
+          <End Role="doacao" Type="Self.doacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mercado">
+              <PropertyRef Name="mercado_id" />
+            </Principal>
+            <Dependent Role="doacao">
+              <PropertyRef Name="mercado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__estado__pais_id__15502E78">
+          <End Role="pais" Type="Self.pais" Multiplicity="1" />
+          <End Role="estado" Type="Self.estado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pais">
+              <PropertyRef Name="pais_id" />
+            </Principal>
+            <Dependent Role="estado">
+              <PropertyRef Name="pais_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__localidad__estad__182C9B23">
+          <End Role="estado" Type="Self.estado" Multiplicity="1" />
+          <End Role="localidade" Type="Self.localidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado">
+              <PropertyRef Name="estado_id" />
+            </Principal>
+            <Dependent Role="localidade">
+              <PropertyRef Name="estado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__higiene__mercado__286302EC">
+          <End Role="mercado" Type="Self.mercado" Multiplicity="1" />
+          <End Role="higiene" Type="Self.higiene" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mercado">
+              <PropertyRef Name="mercado_id" />
+            </Principal>
+            <Dependent Role="higiene">
+              <PropertyRef Name="mercado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__mercado__localid__1B0907CE">
+          <End Role="localidade" Type="Self.localidade" Multiplicity="1" />
+          <End Role="mercado" Type="Self.mercado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="localidade">
+              <PropertyRef Name="localidade_id" />
+            </Principal>
+            <Dependent Role="mercado">
+              <PropertyRef Name="localidade_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ong__localidade___1DE57479">
+          <End Role="localidade" Type="Self.localidade" Multiplicity="1" />
+          <End Role="ong" Type="Self.ong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="localidade">
+              <PropertyRef Name="localidade_id" />
+            </Principal>
+            <Dependent Role="ong">
+              <PropertyRef Name="localidade_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bd_realimentaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="alimento" EntityType="Self.alimento" />
+          <EntitySet Name="categoria_alimento" EntityType="Self.categoria_alimento" />
+          <EntitySet Name="categoria_higiene" EntityType="Self.categoria_higiene" />
+          <EntitySet Name="continente" EntityType="Self.continente" />
+          <EntitySet Name="doacao" EntityType="Self.doacao" />
+          <EntitySet Name="estado" EntityType="Self.estado" />
+          <EntitySet Name="higiene" EntityType="Self.higiene" />
+          <EntitySet Name="localidade" EntityType="Self.localidade" />
+          <EntitySet Name="mercado" EntityType="Self.mercado" />
+          <EntitySet Name="ong" EntityType="Self.ong" />
+          <EntitySet Name="pais" EntityType="Self.pais" />
+          <AssociationSet Name="FK__alimento__catego__239E4DCF" Association="Self.FK__alimento__catego__239E4DCF">
+            <End Role="categoria_alimento" EntitySet="categoria_alimento" />
+            <End Role="alimento" EntitySet="alimento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__alimento__mercad__22AA2996" Association="Self.FK__alimento__mercad__22AA2996">
+            <End Role="mercado" EntitySet="mercado" />
+            <End Role="alimento" EntitySet="alimento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__doacao__alimento__2D27B809" Association="Self.FK__doacao__alimento__2D27B809">
+            <End Role="categoria_alimento" EntitySet="categoria_alimento" />
+            <End Role="doacao" EntitySet="doacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__higiene__categor__29572725" Association="Self.FK__higiene__categor__29572725">
+            <End Role="categoria_higiene" EntitySet="categoria_higiene" />
+            <End Role="higiene" EntitySet="higiene" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pais__continente__1273C1CD" Association="Self.FK__pais__continente__1273C1CD">
+            <End Role="continente" EntitySet="continente" />
+            <End Role="pais" EntitySet="pais" />
+          </AssociationSet>
+          <AssociationSet Name="FK__doacao__mercado___2C3393D0" Association="Self.FK__doacao__mercado___2C3393D0">
+            <End Role="mercado" EntitySet="mercado" />
+            <End Role="doacao" EntitySet="doacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__estado__pais_id__15502E78" Association="Self.FK__estado__pais_id__15502E78">
+            <End Role="pais" EntitySet="pais" />
+            <End Role="estado" EntitySet="estado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__localidad__estad__182C9B23" Association="Self.FK__localidad__estad__182C9B23">
+            <End Role="estado" EntitySet="estado" />
+            <End Role="localidade" EntitySet="localidade" />
+          </AssociationSet>
+          <AssociationSet Name="FK__higiene__mercado__286302EC" Association="Self.FK__higiene__mercado__286302EC">
+            <End Role="mercado" EntitySet="mercado" />
+            <End Role="higiene" EntitySet="higiene" />
+          </AssociationSet>
+          <AssociationSet Name="FK__mercado__localid__1B0907CE" Association="Self.FK__mercado__localid__1B0907CE">
+            <End Role="localidade" EntitySet="localidade" />
+            <End Role="mercado" EntitySet="mercado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ong__localidade___1DE57479" Association="Self.FK__ong__localidade___1DE57479">
+            <End Role="localidade" EntitySet="localidade" />
+            <End Role="ong" EntitySet="ong" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bd_realimentaModelStoreContainer" CdmEntityContainer="bd_realimentaEntities">
+          <EntitySetMapping Name="alimento">
+            <EntityTypeMapping TypeName="bd_realimentaModel.alimento">
+              <MappingFragment StoreEntitySet="alimento">
+                <ScalarProperty Name="alimento_id" ColumnName="alimento_id" />
+                <ScalarProperty Name="validade" ColumnName="validade" />
+                <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="detalhes" ColumnName="detalhes" />
+                <ScalarProperty Name="origem" ColumnName="origem" />
+                <ScalarProperty Name="mercado_id" ColumnName="mercado_id" />
+                <ScalarProperty Name="categoriaalimento_id" ColumnName="categoriaalimento_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categoria_alimento">
+            <EntityTypeMapping TypeName="bd_realimentaModel.categoria_alimento">
+              <MappingFragment StoreEntitySet="categoria_alimento">
+                <ScalarProperty Name="categoriaalimento_id" ColumnName="categoriaalimento_id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categoria_higiene">
+            <EntityTypeMapping TypeName="bd_realimentaModel.categoria_higiene">
+              <MappingFragment StoreEntitySet="categoria_higiene">
+                <ScalarProperty Name="categoriahigiene_id" ColumnName="categoriahigiene_id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="continente">
+            <EntityTypeMapping TypeName="bd_realimentaModel.continente">
+              <MappingFragment StoreEntitySet="continente">
+                <ScalarProperty Name="continente_id" ColumnName="continente_id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="doacao">
+            <EntityTypeMapping TypeName="bd_realimentaModel.doacao">
+              <MappingFragment StoreEntitySet="doacao">
+                <ScalarProperty Name="doacao_id" ColumnName="doacao_id" />
+                <ScalarProperty Name="ong_id" ColumnName="ong_id" />
+                <ScalarProperty Name="mercado_id" ColumnName="mercado_id" />
+                <ScalarProperty Name="alimento_id" ColumnName="alimento_id" />
+                <ScalarProperty Name="higiene_id" ColumnName="higiene_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estado">
+            <EntityTypeMapping TypeName="bd_realimentaModel.estado">
+              <MappingFragment StoreEntitySet="estado">
+                <ScalarProperty Name="estado_id" ColumnName="estado_id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="pais_id" ColumnName="pais_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="higiene">
+            <EntityTypeMapping TypeName="bd_realimentaModel.higiene">
+              <MappingFragment StoreEntitySet="higiene">
+                <ScalarProperty Name="higiene_id" ColumnName="higiene_id" />
+                <ScalarProperty Name="validade" ColumnName="validade" />
+                <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="detalhes" ColumnName="detalhes" />
+                <ScalarProperty Name="origem" ColumnName="origem" />
+                <ScalarProperty Name="mercado_id" ColumnName="mercado_id" />
+                <ScalarProperty Name="categoriahigiene_id" ColumnName="categoriahigiene_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="localidade">
+            <EntityTypeMapping TypeName="bd_realimentaModel.localidade">
+              <MappingFragment StoreEntitySet="localidade">
+                <ScalarProperty Name="localidade_id" ColumnName="localidade_id" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="endereco" ColumnName="endereco" />
+                <ScalarProperty Name="estado_id" ColumnName="estado_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mercado">
+            <EntityTypeMapping TypeName="bd_realimentaModel.mercado">
+              <MappingFragment StoreEntitySet="mercado">
+                <ScalarProperty Name="mercado_id" ColumnName="mercado_id" />
+                <ScalarProperty Name="cnpj" ColumnName="cnpj" />
+                <ScalarProperty Name="razao_social" ColumnName="razao_social" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="responsavel" ColumnName="responsavel" />
+                <ScalarProperty Name="contato" ColumnName="contato" />
+                <ScalarProperty Name="localidade_id" ColumnName="localidade_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ong">
+            <EntityTypeMapping TypeName="bd_realimentaModel.ong">
+              <MappingFragment StoreEntitySet="ong">
+                <ScalarProperty Name="ong_id" ColumnName="ong_id" />
+                <ScalarProperty Name="cnpj" ColumnName="cnpj" />
+                <ScalarProperty Name="razao_social" ColumnName="razao_social" />
+                <ScalarProperty Name="atividade" ColumnName="atividade" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="responsavel" ColumnName="responsavel" />
+                <ScalarProperty Name="contato" ColumnName="contato" />
+                <ScalarProperty Name="localidade_id" ColumnName="localidade_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pais">
+            <EntityTypeMapping TypeName="bd_realimentaModel.pais">
+              <MappingFragment StoreEntitySet="pais">
+                <ScalarProperty Name="pais_id" ColumnName="pais_id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="continente_id" ColumnName="continente_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram DiagramId="1ba031ba49194bbc9a2bf0d5b7e3791c" Name="Diagram1">
+        <EntityTypeShape EntityType="bd_realimentaModel.alimento" Width="1.5" PointX="12" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_realimentaModel.categoria_alimento" Width="1.5" PointX="9.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_realimentaModel.categoria_higiene" Width="1.5" PointX="9.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_realimentaModel.continente" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_realimentaModel.doacao" Width="1.5" PointX="15" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_realimentaModel.estado" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_realimentaModel.higiene" Width="1.5" PointX="12" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_realimentaModel.localidade" Width="1.5" PointX="7.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_realimentaModel.mercado" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_realimentaModel.ong" Width="1.5" PointX="9.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_realimentaModel.pais" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <AssociationConnector Association="bd_realimentaModel.FK__alimento__catego__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_realimentaModel.FK__alimento__mercad__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_realimentaModel.FK__doacao__alimento__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_realimentaModel.FK__higiene__categor__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_realimentaModel.FK__pais__continente__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_realimentaModel.FK__doacao__mercado___2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_realimentaModel.FK__estado__pais_id__15502E78" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_realimentaModel.FK__localidad__estad__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_realimentaModel.FK__higiene__mercado__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_realimentaModel.FK__mercado__localid__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_realimentaModel.FK__ong__localidade___1DE57479" ManuallyRouted="false" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

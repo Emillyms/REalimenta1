@@ -1,0 +1,74 @@
+﻿@model REalimenta1.Models.alimento
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>alimento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.validade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.validade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.detalhes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.detalhes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.origem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.origem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.categoria_alimento.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.categoria_alimento.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mercado.cnpj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mercado.cnpj)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.alimento_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

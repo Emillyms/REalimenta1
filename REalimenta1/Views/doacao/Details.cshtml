@@ -1,0 +1,50 @@
+﻿@model REalimenta1.Models.doacao
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>doacao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ong_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ong_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.higiene_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.higiene_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.categoria_alimento.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.categoria_alimento.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mercado.cnpj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mercado.cnpj)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.doacao_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

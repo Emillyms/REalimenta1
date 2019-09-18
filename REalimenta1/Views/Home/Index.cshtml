@@ -1,0 +1,134 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - REALIMENTA</title>
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body>
+    <br />
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+                <div id="demo" class="carousel slide" data-ride="carousel">
+                    <ul class="carousel-indicators">
+                        <li data-target="#demo" data-slide-to="0" class="active"></li>
+                        <li data-target="#demo" data-slide-to="1"></li>
+                        <li data-target="#demo" data-slide-to="2"></li>
+                    </ul>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="~/Resources/imagens/ongs.png" alt="Ongs">
+                            <!--<div class="carousel-caption">
+                                <h5>Mais de 50 ONGS são ajudadas com o REalimenta</h5>
+                            </div>-->
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/Resources/imagens/ongtec.png" alt="Tecnologia">
+                            <!--<div class="carousel-caption">
+                                <h5>A importância da tecnologia do 3º setor</h5>
+                            </div>-->
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/Resources/imagens/voluntario.png" alt="Voluntariado">
+                            <!--<div class="carousel-caption">
+                                <h5>Ajude o projeto, seja um voluntário</h5>
+                            </div>-->
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                        <span class="carousel-control-prev-icon bg-dark"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#demo" data-slide="next">
+                        <span class="carousel-control-next-icon bg-dark"></span>
+                    </a>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 ">
+                        <h4 class="text-center">Como ser ajudado?</h4>
+                        <br />
+                        <img src="~/Resources/imagens/help.png" alt="Ajuda" class="mx-auto d-block" />
+                        <br />
+                        <p class="text-justify">O projeto REalimenta abriga diversas ONG's, para inserir uma no projeto, basta fazer o cadastro, informando nome da ONG, responsável e CNPJ e esperar a aprovação</p>
+
+                        <hr />
+
+                        <h4 class="text-center">Contate-nos</h4>
+                        <br />
+                        <img src="~/Resources/imagens/contato.png" alt="Contato" class="mx-auto d-block" />
+                        <br />
+                        <p class="text-justify">Para mais informações sobre o projeto, entre em contato conosco:</p>
+                        <p class="text-justify">Telefone Fixo: 11 25897481</p>
+                        <p class="text-justify">Telefone Celular: 11 921256841</p>
+                        <p class="text-justify">Whatsapp: 11 945892101</p>
+
+                        <hr />
+
+                        <h4 class="text-center">Prêmios Recebidos</h4>
+                        <br />
+                        <img src="~/Resources/imagens/premios.PNG" alt="Prêmios" class="mx-auto d-block" />
+                        <hr />
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+                        <h4 class="text-center">Depoimentos</h4>
+                        <br />
+                        <img src="~/Resources/imagens/depoimento.png" alt="Depoimento" class="mx-auto d-block" />
+                        <br />
+                        <p class="text-justify"><b>Amanda(Agente social da ONG Compartilhar):</b> Sou grata por esse projeto existir, em momentos de difucldades na ONG recorri ao REalimenta e consegui manter a organização graças as doações recebidas</p>
+                        <p class="text-justify"><b>Juliano(Gerente do Mercado União):</b> Me filiei a esse projeto e sou muito feliz em poder contribuir para que pessoas necessitadas sejam alcançadas</p>
+                        <p class="text-justify"><b>José(Morador da ONG Abraço Fraternal):</b> Entrei na ONG Abraço Fraternal em 2012, e desde lá, recebemos doações e por isso conseguimos nos manter</p>
+                        <p class="text-justify">Leia mais...</p>
+                        <br />
+
+                        <hr />
+
+                        <h4 class="text-center">Doações</h4>
+                        <br />
+                        <img src="~/Resources/imagens/doar.png" alt="Doar" class="mx-auto d-block" />
+                        <br />
+                        <p class="text-justify">As doações podem ser feitas via boleto, cartão de crédito e débito</p>
+
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <td><b>R$10</b></td>
+                                    <td>Com esse valor, damos voz à causa. Aos olhos dos necessitados surge uma ponta de confiança e esperança.</td>
+                                </tr>
+                                <tr>
+                                    <td><b>R$20</b></td>
+                                    <td>Investimos no que é preciso para reverter o quadro crítico da alimentação. Com esta doação, vidas começam a mudar.</td>
+                                </tr>
+                                <tr>
+                                    <td><b>R$35</b></td>
+                                     <td>Mais possibilidades se abrem para a causa e uma doação de amor possibilita auxiliar as ONG's necessitadas</td>
+                                </tr>
+                                <tr>
+                                    <td><b>R$70</b></td>
+                                    <td>Você faz parte da nossa história. Sua doação nos deixa mais perto de cumprir nosso objetivo!</td>
+                                </tr>
+                                <tr>
+                                    <td><b>R$120</b></td>
+                                    <td>Trabalharemos muito para que as vidas necessitadas possam voltar a acreditar e viver bem.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p class="text-center"><b>Contribua!</b></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

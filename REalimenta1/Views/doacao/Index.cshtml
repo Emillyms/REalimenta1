@@ -1,0 +1,51 @@
+﻿@model IEnumerable<REalimenta1.Models.doacao>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ong_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.higiene_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.categoria_alimento.nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mercado.cnpj)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ong_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.higiene_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.categoria_alimento.nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mercado.cnpj)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.doacao_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.doacao_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.doacao_id })
+        </td>
+    </tr>
+}
+
+</table>
